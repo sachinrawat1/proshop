@@ -7,6 +7,7 @@ import { useLogoutMutation } from "../slices/usersSlice";
 import { useNavigate } from "react-router-dom";
 import { removeCredentials } from "../slices/authSlice";
 import { toast } from "react-toastify";
+import { resetCart } from "../slices/cartSlice";
 const Header = () => {
   const { cartItems } = useSelector((state) => state.cart);
   const { userInfo } = useSelector((state) => state.auth);
@@ -14,7 +15,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [logout, { isLoading }] = useLogoutMutation();
+  const [logout] = useLogoutMutation();
 
   const logoutHandler = async () => {
     try {
